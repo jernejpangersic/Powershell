@@ -13,7 +13,7 @@ Collection of scripts to simplify working with Microsoft 365 and Microsoft Teams
 
 2. Next install required modules
     ```
-    Install-Module AzureAD
+    Install-Module AzureADPreview
     Install-Module MSOnline
     Install-Module MicrosoftTeams
     ```

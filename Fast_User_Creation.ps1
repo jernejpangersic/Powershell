@@ -1,12 +1,15 @@
 # This script lets you create an user and add them to a team
 
+Import-Module MsOnline
+Import-Module MicrosoftTeams
+
 # Function to remove special characters
 function RmvSpc
 {
     PARAM ([string]$String)
     [Text.Encoding]::ASCII.GetString([Text.Encoding]::GetEncoding("Cyrillic").GetBytes($String))
 }
-
+$credentials = Get-Credential
 $domain = "@mydomain.com"
 
 $firstName = Read-Host -Prompt "First name"
@@ -26,10 +29,6 @@ if($staff) {
     $LicenseAssignment = "XXXXX:STANDARDWOFFPACK_STUDENT"
 }
 
-# Fill with username and password
-$UserName = "username"
-$PWord = ConvertTo-SecureString -String "password" -AsPlainText -Force
-$credentials = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $UserName, $PWord
 
 # Connect to MSOL Service and Microsoft Teams
 Connect-MsolService -Credential $credentials
